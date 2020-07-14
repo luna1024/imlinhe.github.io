@@ -113,6 +113,7 @@ module.exports = {
             ['公共方法汇总.md', '公共方法汇总'],
             ['浮点数运算误差.md', '浮点数运算误差'],
             ['isEqual.md', 'isEqual'],
+            ['ESLint配置项.md', 'ESLint配置项'],
           ]
         }
       ],
