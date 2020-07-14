@@ -90,7 +90,8 @@
 
 ```json
 {
-  "editor.tabSize": 2,"editor.wordWrap": "on",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
   "editor.lineHeight": 26,
   "editor.fontFamily": "Monaco, 苹方-简",
   "editor.letterSpacing": 0.5,
@@ -142,9 +143,9 @@
   ],
   "prettier.printWidth": 120,
   // 在jsx中把'>' 是否单独放一行
-  "prettier.jsxBracketSameLine": false, 
+  "prettier.jsxBracketSameLine": false,
   // 在jsx中使用单引号代替双引号
-  "prettier.jsxSingleQuote": false, 
+  "prettier.jsxSingleQuote": false,
   // jsx自动修复有问题，取消js的format
   "editor.formatOnSave": false,
   // Enable/disable default JavaScript formatter (For Prettier)
@@ -156,10 +157,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "prettier.tabWidth": 2,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.tabWidth": 2,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
@@ -172,7 +173,15 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  // 页面报错信息提醒
   "eslint.options": {
+    "parserOptions": {
+      "ecmaVersion": 7, // 允许使用 es7 语法
+      "sourceType": "module", // 使用 module/import 导入导出
+      "ecmaFeatures": { // 添加ES特性支持，使之能够识别ES6语法
+        "jsx": true
+      }
+    },
     "rules": {
       "func-names": 0, //函数表达式必须有名字
       "no-restricted-syntax": 0, // 禁止使用for in for of语法
@@ -212,9 +221,9 @@
       "prefer-const": 0,
       "dot-location": 0, //对象访问符的位置，换行的时候在行首还是行尾
       "react-hooks/exhaustive-deps": 0, // 禁止检查 Hook 的规则
-    },
-  },
-  // "javascript.updateImportsOnFileMove.enabled": "always",
+    }
+  }
+  // -------------------------- 分割线 -------------------------------
 }
 ```
 
