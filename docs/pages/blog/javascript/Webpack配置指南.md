@@ -1080,7 +1080,7 @@ module.exports = {
     }),
     new HappyPack({
       id: 'ts',
-      loader: [
+      loaders: [
         {
           loader: 'ts-loader',
           options: {}
