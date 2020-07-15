@@ -114,6 +114,7 @@ module.exports = {
             ['浮点数运算误差.md', '浮点数运算误差'],
             ['isEqual.md', 'isEqual'],
             ['ESLint配置项.md', 'ESLint配置项'],
+            ['电话号码分段.md', '电话号码分段'],
           ]
         }
       ],
