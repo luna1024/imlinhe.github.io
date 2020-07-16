@@ -115,6 +115,7 @@ module.exports = {
             ['isEqual.md', 'isEqual'],
             ['ESLint配置项.md', 'ESLint配置项'],
             ['电话号码分段.md', '电话号码分段'],
+            ['Canvas签名.md', 'Canvas签名'],
           ]
         }
       ],
