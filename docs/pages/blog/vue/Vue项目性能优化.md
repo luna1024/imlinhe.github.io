@@ -123,6 +123,7 @@ var app = express();
 app.use(compression())
 ```
 （3）重启服务，观察网络面板里面的 response header，如果看到如下红圈里的字段则表明 gzip 开启成功 ：
+
 ![](../images/1.png)
 
 + **浏览器缓存**

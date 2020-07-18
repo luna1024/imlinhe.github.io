@@ -261,6 +261,14 @@ module.exports = {
 
 publicPath：publicPath用来指定资源的请求位置。
 
+:::tip
+顺便说一下关于 Node 的 path 模块：
+
+- path.join 字符拼接并进行路径规范化
+- path.resolve 绝对路径，相当于将路径逐一进行 cd 操作
+- __dirname 被执行 JS 的绝对路径
+:::
+
 ## 预处理器（loader）
 
 webpack可处理不同资源类型的文件，如HTML、CSS、模板、图片、字体等，这些都是通过loader来实现的。
@@ -605,7 +613,7 @@ entry: {
 
 **CommonsChunkPlugin**
 
-CommonsChunkPlugin是webpack4之前内部自带的插件，它可以将多个chunk中公共的部分提取处理啊。我们先从一个例子中对比使用CommonsChunkPlugin后的结果，下面是未使用CommonsChunkPlugin的配置：
+CommonsChunkPlugin是webpack4之前内部自带的插件，它可以将多个chunk中公共的部分提取处理。我们先从一个例子中对比使用CommonsChunkPlugin后的结果，下面是未使用CommonsChunkPlugin的配置：
 
 ```js
 // webpack.config.js
@@ -628,9 +636,9 @@ import React from 'react'
 document.write('bar.js', React.version)
 ```
 
-这样的配置的打包结果是：分别打包了foo.js和bar.js，并且react分别被打包进对应的模块，也就是被重复打包了。
+这样的配置的打包结果是：分别打包了 foo.js 和 bar.js，并且 react 分别被打包进对应的模块，也就是被重复打包了。
 
-更改webpack.config.js，添加CommonsChunkPlugin。
+更改 webpack.config.js，添加 CommonsChunkPlugin。
 
 ```js
 // webpack.config.js
@@ -654,9 +662,9 @@ module.exports = {
 }
 ```
 
-此次打包将多产出一个commons.js，而foo.js和bar.js的打包文件中将不包含react，而是把它提取到了commons.js。
+此次打包将多产出一个 commons.js，而 foo.js 和 bar.js 的打包文件中将不包含 react，而是把它提取到了 commons.js。
 
-当然，我们也可以使用CommonsChunkPlugin提取单入口的应用，只需要单独为第三方类库创建一个入口即可：
+当然，我们也可以使用 CommonsChunkPlugin 提取单入口的应用，只需要单独为第三方类库创建一个入口即可：
 
 ```js
 // webpack.config.js
@@ -700,7 +708,7 @@ plugins: [
 
 **optimization.SplitChunks**
 
-optimization.SplitChunks是webpack4为了改进CommonsChunk-Plugin而重新设计和实现的代码分片特性。使用SplitChunks来提取react试试：
+optimization.SplitChunks 是 webpack4 为了改进 CommonsChunk-Plugin 而重新设计和实现的代码分片特性。使用 SplitChunks 来提取 react 试试：
 
 ```js
 // webpack.config.js
@@ -728,7 +736,7 @@ import React from 'react'
 console.log('bar.js', React.version)
 ```
 
-SplitChunks的默认配置如下：
+SplitChunks 的默认配置如下：
 
 ```js
 splitChunks: {
@@ -762,9 +770,9 @@ splitChunks: {
 
 ## 生产环境配置
 
-生产环境的配置与开发环境有所不同，比如要设置mode、环境变量，为文件名添加chunk hash作为版本号等。
+生产环境的配置与开发环境有所不同，比如要设置 mode、环境变量，为文件名添加 chunk hash 作为版本号等。
 
-环境变量：通常我们需要为生产环境和本地环境添加不同的环境变量，在webpack中可以使用DefinePlugin进行设置。
+环境变量：通常我们需要为生产环境和本地环境添加不同的环境变量，在 webpack 中可以使用 DefinePlugin 进行设置。
 
 ```js
 // webpack.config.js
@@ -782,7 +790,7 @@ module.exports = {
 document.write(ENV)
 ```
 
-许多框架和库都采用process.env.NODE_ENV作为一个区别开发环境和生产环境的变量。process.env是Node.js用于存放当前进程环境变量的对象，而NODE_ENV则可以让开发者指定当前的运行时环境。
+许多框架和库都采用 process.env.NODE_ENV 作为一个区别开发环境和生产环境的变量。process.env 是 Node.js 用于存放当前进程环境变量的对象，而 NODE_ENV 则可以让开发者指定当前的运行时环境。
 
 ```js
 new webpack.DefinePlugin({
@@ -790,11 +798,11 @@ new webpack.DefinePlugin({
 })
 ```
 
-如果启动了mode: production，则webpack已经设置好了process.env.NODE_ENV，不需要再认为添加了。
+如果启动了 mode: production，则 webpack 已经设置好了 process.env.NODE_ENV，不需要再人为添加了。
 
-source map：source map指的是将编译、打包、压缩后的代码映射回源代码的过程。生成的map文件可能会很大，但是不用担心，只要不打开开发者工具，默认的map文件不会被加载。
+source map：source map 指的是将编译、打包、压缩后的代码映射回源代码的过程。生成的 map 文件可能会很大，但是不用担心，只要不打开开发者工具，默认的 map 文件不会被加载。
 
-javascript的source map的配置很简单：
+javascript 的 source map 的配置很简单：
 
 ```js
 module.exports = {
@@ -977,9 +985,9 @@ module.exports = {
 - 从配置中获取打包入口；
 - 匹配loader规则，并对入口模块进行转译；
 - 对转译后的模块进行依赖查找；
-- 对新找到的模块重复惊醒步骤2、3，直到没有新的依赖模块。
+- 对新找到的模块重复进行步骤2、3，直到没有新的依赖模块。
 
-可以看出，上面的流程是一个递归则过程，而webpack是单线程的，它只能逐个的对模块进行转译。HappyPack解决的就是这个痛点，它的核心特性是可以开启多个线程，并行地对不同模块进行转译。
+可以看出，上面的流程是一个递归的过程，而webpack是单线程的，它只能逐个的对模块进行转译。HappyPack解决的就是这个痛点，它的核心特性是可以开启多个线程，并行地对不同模块进行转译。
 
 单个loader的优化：一般地，HappyPack适用于那些转译任务比较重的工程，如babel-loader和ts-loader，而对于其他的如sass-loader、less-loader的优化效果不大明显。
 ```js
@@ -1064,7 +1072,7 @@ module.exports = {
     }),
     new HappyPack({
       id: 'ts',
-      loader: [
+      loaders: [
         {
           loader: 'ts-loader',
           options: {}
@@ -1109,11 +1117,11 @@ export function bar() {
 }
 ```
 
-在webpack打包时会对bar()添加一个标记，在正常开发模式下它仍然存在，只是在生产环境的压缩那一步会被一出掉。
+在webpack打包时会对bar()添加一个标记，在正常开发模式下它仍然存在，只是在生产环境的压缩那一步会被移除掉。
 
-tree shaking可以是bundle体积显著减少，但实现tree shaking需要一些前提条件：tree shaking只能对ES6 Module生效。而为了更好的兼容性，目前的npm包大部分还在使用CommonJS的形式。
+tree shaking可以使bundle体积显著减少，但实现tree shaking需要一些前提条件：tree shaking只能对ES6 Module生效。而为了更好的兼容性，目前的npm包大部分还在使用CommonJS的形式。
 
-如果我们在工程中使用了babel-loader，那么一定要通过配置来禁用它的模块依赖解析。因为如果由babel-loader来做依赖解析，webpack接收到的就都是转化过的CommonJS形式的模块，无法进行tree-shaking。禁用babel-loader模块依赖解析的配置示例如下：
+**如果我们在工程中使用了babel-loader，那么一定要通过配置来禁用它的模块依赖解析。** 因为如果由babel-loader来做依赖解析，webpack接收到的就都是转化过的CommonJS形式的模块，无法进行tree-shaking。禁用babel-loader模块依赖解析的配置示例如下：
 ```js
 module.exports = {
   // ...
@@ -1220,7 +1228,7 @@ module.exports = Object.assign(commonConfig, {
 })
 ```
 
-这样看起来似乎也没什么毛病，但是假如我们需要修改webpack.common.js中的某一个loader的话，不许替换到真个module的配置，因为用过Object.assign没办法准确找到CSS的规则进行替换。下面看看使用webpack-merge来解决这个问题：
+这样看起来似乎也没什么毛病，但是假如我们需要修改webpack.common.js中的某一个loader的话，则需要替换掉整个module的配置，因为用Object.assign没办法准确找到CSS的规则进行替换。下面看看使用webpack-merge来解决这个问题：
 
 ```js
 // webpack.prod.js
