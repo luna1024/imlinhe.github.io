@@ -56,6 +56,7 @@ module.exports = {
             ['javascript/原型和原型链.md', '原型和原型链'],
             ['javascript/防抖和节流.md', '防抖和节流'],
             ['javascript/函数柯里化.md', '函数柯里化'],
+            ['javascript/字符串方法.md', '字符串方法'],
           ]
         },
         {
