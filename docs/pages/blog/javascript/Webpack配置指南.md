@@ -1174,7 +1174,7 @@ module.exports = {
 
 webpack-dashboard 以表格的形式展示构建后的包的信息。
 
-![](http://i.imgur.com/qL6dXJd.png)
+![](https://i.imgur.com/qL6dXJd.png)
 
 配置：
 
