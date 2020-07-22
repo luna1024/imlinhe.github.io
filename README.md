@@ -1,6 +1,6 @@
 # 林河前端之路
 
-[项目地址](https://aaaxiu.github.io)
+[项目地址](https://islinhe.com)
 
 ### 项目启动和打包方式
 
