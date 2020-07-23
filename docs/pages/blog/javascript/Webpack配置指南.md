@@ -23,7 +23,7 @@
 
 **进入正题：**
 
-<!-- 我的代码同步在[github](https://github.com/aaaxiu/Webpack_Config)上，可对比查看。 -->
+<!-- 我的代码同步在[github](https://github.com/imlinhe/Webpack_Config)上，可对比查看。 -->
 
 #### 安装
 

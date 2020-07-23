@@ -80,7 +80,7 @@
 - "@vuepress/plugin-google-analytics": 谷歌应用分析
 - "@vuepress/plugin-medium-zoom": 图片缩放
 
-相关配置查看 [config.js](https://github.com/aaaxiu/aaaxiu.github.io/blob/source_code/docs/.vuepress/config.js#L13)
+相关配置查看 [config.js](https://github.com/imlinhe/imlinhe.github.io/blob/source_code/docs/.vuepress/config.js#L13)
 
 ### 问题
 

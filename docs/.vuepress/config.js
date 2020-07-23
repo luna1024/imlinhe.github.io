@@ -22,8 +22,8 @@ module.exports = {
       {
         locale: 'zh',
         platform: 'github',
-        owner: 'aaaxiu',
-        repo: 'aaaxiu.github.io',
+        owner: 'imlinhe',
+        repo: 'imlinhe.github.io',
         clientId: 'fae53e244022d47c67b5',
         clientSecret: '5e889a5769ce43575d4e0425ae63c5b97db4e720',
       }
@@ -40,7 +40,7 @@ module.exports = {
       { text: '博文', link: '/pages/blog/javascript/Webpack配置指南' }, // 内部链接 以docs为根目录
       { text: '代码块', link: '/pages/code/一行代码实现时间戳转时分秒'},
       // { text: '读《JS高程》', link: '/pages/js-programme/Javascript简介.md' },
-      { text: 'GitHub', link: 'https://github.com/aaaxiu'}  
+      { text: 'GitHub', link: 'https://github.com/imlinhe'}  
     ],
     sidebar: {
       '/pages/blog/': [         
